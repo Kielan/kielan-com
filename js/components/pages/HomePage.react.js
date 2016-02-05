@@ -10,6 +10,14 @@ import { Link } from 'react-router';
 
 
 class Post extends Component {
+    constructor(props) {
+	super(props)
+	this.state = {
+	    url: '',
+	    date: '',
+	    content: ''
+	}
+    }
     generateUrl() {
 	var preUrl = this.props.title,
 	    postUrl = preUrl.replace(/\s+/g, '-').toLowerCase();
@@ -33,11 +41,6 @@ class Post extends Component {
 	var preContent = this.props.content,
 	    postContent = preContent.slice(0,450);
 	this.setState({content: postContent});
-    }
-    getInitialState() {
-	return {url: '',
-		date: '',
-		content: ''};
     }
     render() {
 	return (
@@ -67,14 +70,18 @@ class Post extends Component {
 class PostList extends Component {
     render() {
 	console.log('render')
-	var blogPosts = this.props.data.map(function(post, index){
+	 var blogPosts = this.props.data.map(function(post, index){
 	 //   console.log(post)
-	    return (
+	 return (
+		 <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content}/>
+	     );
+	 });
+	
+	return (
 		<div>
-		    <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content}/>
-		    </div>
-	    );
-	});
+		{blogPosts}
+	        </div>
+	)
     }
 }
 
