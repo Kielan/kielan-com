@@ -8,6 +8,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+class About extends Component {
+    render() {
+	return (
+		<div className="about">
+
+		<img className="profilePic" src="img/kielan.jpg" alt="Kielan Lemons"></img>
+
+		<h1>Kielan Lemons</h1>
+		<div className="bio"></div>
+		<div className="bio-quote">
+		<p>"Imagination is its own form of ourage"</p>
+		<p>-Frank Underwood</p>
+		</div>
+		<div className="about-links">
+		<a href="https://www.instagram.com/kielan_lemons/"><span>Instagram</span></a>
+		<a href="https://twitter.com/KielanLemons"><span>Twitter</span></a>
+		<a href="https://github.com/Kielan"><span>Github</span></a>
+		</div>
+	    </div>
+	)
+    }
+}
 
 class Post extends Component {
     constructor(props) {
@@ -17,12 +39,15 @@ class Post extends Component {
 	    date: '',
 	    content: ''
 	}
+
     }
     generateUrl() {
 	var preUrl = this.props.title,
-	    postUrl = preUrl.replace(/\s+/g, '-').toLowerCase();
+	    postUrl = preUrl.replace(/\s+/g, '-').toLowerCase(),
+	    post = 'post/',
+	    completeUrl = post.concat(postUrl);
 	
-	this.setState({url: postUrl})	
+	this.setState({url: completeUrl})	
     }
     generateDate() {
 	var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -38,26 +63,45 @@ class Post extends Component {
 	this.setState({date: postDate})
     }
     generateContent() {
+	console.log("this is the content" + this.props.content)
 	var preContent = this.props.content,
-	    postContent = preContent.slice(0,450);
-	this.setState({content: postContent});
+	    postContent = preContent.slice(0,450),
+	    dots = '... ';
+
+	//check if the last character is a space
+	function testPostContent(string) {
+	    if(/\s+$/.test(string)) {
+		postContent = postContent.substring(0, postContent.length -1);    
+	    }
+	    return postContent
+	}
+	testPostContent(postContent);
+	
+	var completeContent = postContent.concat(dots);
+	
+	this.setState({content: completeContent});
+    }
+    componentDidMount() {
+	this.generateUrl();
+	this.generateDate();
+	this.generateContent();
     }
     render() {
 	return (
-	    	<div class="main">
-		<div class="posts">
-		<ul class="blogsList">
-		<li class="menuItem col-md-2">
-		<a href={this.state.url}>
+	    	<div className="main">
+		<div className="posts">
+		<ul className="blogsList">
+		<li className="menuItem col-md-2">
+		<a className="title" href={this.state.url}>
 		<h2>{this.props.title}</h2>
 		</a>
 		<h3>{this.props.subtitle}</h3>
-		<span>{this.state.date}</span>
-		<span>comments</span>
-		<span>more</span>
-		<div>{this.state.url}</div>
-		<p>{this.state.content}</p>
-		
+		<span>{this.state.date}</span><br />
+		<span>comments</span><br />
+		<span className="mainpage-post-content">{this.state.content}</span>
+		<a href={this.state.url}>
+		<span>[read more]</span>
+		</a>
 	    </li>
 	        </ul>
 		</div>
@@ -71,14 +115,13 @@ class PostList extends Component {
     render() {
 	console.log('render')
 	 var blogPosts = this.props.data.map(function(post, index){
-	 //   console.log(post)
 	 return (
-		 <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content}/>
+		 <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content} key="post.key"/>
 	     );
 	 });
 	
 	return (
-		<div>
+		<div className="post-list">
 		{blogPosts}
 	        </div>
 	)
@@ -114,19 +157,14 @@ class HomePage extends Component {
     const dispatch = this.props.dispatch;
     const { projectName, ownerName } = this.props.data;
     return (
-      <div>
-        <h1>Hello World!</h1>
-        <h2>This is the demo for the <span className="home__text--red">{ projectName }</span> by <a href={'https://twitter.com/' + ownerName} >@{ ownerName }</a></h2>
-        <label className="home__label">Change to your project name:
-          <input className="home__input" type="text" onChange={(evt) => { dispatch(asyncChangeProjectName(evt.target.value)); }} defaultValue="React.js Boilerplate" value={projectName} />
-        </label>
-        <label className="home__label">Change to your name:
-          <input className="home__input" type="text" onChange={(evt) => { dispatch(asyncChangeOwnerName(evt.target.value)); }} defaultValue="mxstbr" value={ownerName} />
-        </label>
-            <Link className="btn" to="/readme">Setup</Link>
-
+      <div className="hz">
+	    <div>
 	    <PostList data={this.state.data} />
-      </div>
+	    </div>
+	    <div>
+	    <About />
+	    </div>
+	    </div>
     );
   }
 }
