@@ -3,6 +3,7 @@
  * This is the first thing users see of our App
  */
 
+import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -91,13 +92,13 @@ class Post extends Component {
 		<div className="posts">
 		<ul className="blogsList">
 		<li className="menuItem col-md-2">
-		<Link className="title" to={this.state.url}>
+		<a className="title" href={this.state.url}>
 		<h2>{this.props.title}</h2>
-		</Link>
+		</a>
 		<h3>{this.props.subtitle}</h3>
 		<span>{this.state.date}</span><br />
 		<span>comments</span><br />
-		<span className="mainpage-post-content">{this.state.content}</span>
+		<span className="post-content">{this.state.content}</span>
 		<a href={this.state.url}>
 		<span>[read more]</span>
 		</a>

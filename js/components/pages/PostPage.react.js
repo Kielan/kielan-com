@@ -4,10 +4,6 @@ Posts Page
 import React, { Component } from 'react';
 
 
-
-
-
-
 class PostPage extends Component {
     constructor(props) {
 	super(props)
@@ -15,7 +11,7 @@ class PostPage extends Component {
 	    params: ''
 	}
     }
-
+    /*
     fetchPost() {
 	var post = this.props.params
 	$.ajax({
@@ -30,27 +26,23 @@ class PostPage extends Component {
 	    }.bind(this)
 	})
     }
-    
+    */
     render() {
-	var post = this.props.posts[this.props.params.id]
-
-	return (
-	    
+	//var post = this.props.posts[this.props.params.id]
+	console.log('props ' + this.props);
+	return (	    
 	    	<div className="main">
 		<div className="posts">
 		<ul className="blogsList">
 		<li className="menuItem col-md-2">
-		<a className="title" href={this.state.url}>
+		/*<a className="title" href={this.state.url}>
 		<h2>{this.props.title}</h2>
 		</a>
 		<h3>{this.props.subtitle}</h3>
-		<span>{this.state.date}</span><br />
+		<span>{this.state.date}</span><br />*/
 		<span>comments</span><br />
 		<span className="mainpage-post-content">{this.state.content}</span>
-		<a href={this.state.url}>
-		<span>[read more]</span>
-		</a>
-	    </li>
+		</li>
 	        </ul>
 		</div>
 		</div>
@@ -59,3 +51,5 @@ class PostPage extends Component {
     }
 
 }
+
+export default PostPage;
