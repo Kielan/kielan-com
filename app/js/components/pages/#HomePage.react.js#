@@ -3,6 +3,7 @@
  * This is the first thing users see of our App
  */
 
+import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppActions';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -58,7 +59,6 @@ class Post extends Component {
 	    day = day[0];
 	
 	var postDate = monthName + ' ' + day + ', ' + postDate[0]; 
-	console.log('finish  ', postDate);
 	this.setState({date: postDate})
     }
     generateContent() {
@@ -97,7 +97,7 @@ class Post extends Component {
 		<h3>{this.props.subtitle}</h3>
 		<span>{this.state.date}</span><br />
 		<span>comments</span><br />
-		<span className="mainpage-post-content">{this.state.content}</span>
+		<span className="post-content">{this.state.content}</span>
 		<a href={this.state.url}>
 		<span>[read more]</span>
 		</a>

@@ -86,8 +86,11 @@ module.exports = function(options) {
         }, {
           test: /\.jpe?g$|\.gif$|\.png$/i,
           loader: "url-loader?limit=10000"
-        }
-      ]
+        },
+	{
+	    test: /\.json$/,
+	    loader: 'json'
+	}]
     },
     plugins: plugins,
     postcss: function() {
