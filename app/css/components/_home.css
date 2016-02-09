@@ -4,6 +4,7 @@
 	margin: 0 0;
 	display: flex;
 	align-items: center;
+	flex-direction: column;
 }
 
 .home__wrapper a {
@@ -81,7 +82,11 @@ a {
     text-decoration: none;
     padding: 0;
     display: inline-block;
-    color: black;
+    color: black !important;
+}
+
+a:hover{
+    text-decoration: none !important;
 }
 
 nav {
@@ -105,7 +110,6 @@ nav {
 }
 
 .about {
-    width: 20rem;
     line-height: 1;
     margin-top: 10rem;
     display: flex;
@@ -136,13 +140,12 @@ nav {
     font-weight: bold;
 }
 .post-list {
-    margin-left: 10rem;
-    width: 40rem;
+
 }
 
 .bio-quote {
     margin: .5rem 0 1rem 0;
-    width: 15rem;
+    width: 21rem;
     line-height: 1.5;
 }
 
@@ -151,4 +154,8 @@ nav {
     line-height: 1.58;
     letter-spacing: -0.003em;
     color: rgba(0, 0, 0, 0.9);
+}
+
+.homeWrapper {
+    width: 100%;
 }

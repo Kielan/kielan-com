@@ -7,29 +7,7 @@ import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppA
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
-class About extends Component {
-    render() {
-	return (
-		<div className="about">
-
-		<img className="profilePic" src="img/kielan.jpg" alt="Kielan Lemons"></img>
-
-		<h1>Kielan Lemons</h1>
-		<div className="bio"></div>
-		<div className="bio-quote">
-		<p>"Imagination is its own form of ourage"</p>
-		<p>-Frank Underwood</p>
-		</div>
-		<div className="about-links">
-		<a href="https://www.instagram.com/kielan_lemons/"><span>Instagram</span></a>
-		<a href="https://twitter.com/KielanLemons"><span>Twitter</span></a>
-		<a href="https://github.com/Kielan"><span>Github</span></a>
-		</div>
-	    </div>
-	)
-    }
-}
+import About from '../shared/About.react';
 
 class Post extends Component {
     constructor(props) {
@@ -59,7 +37,6 @@ class Post extends Component {
 	    day = day[0];
 	
 	var postDate = monthName + ' ' + day + ', ' + postDate[0]; 
-	console.log('finish  ', postDate);
 	this.setState({date: postDate})
     }
     generateContent() {
@@ -91,7 +68,7 @@ class Post extends Component {
 	    	<div className="main">
 		<div className="posts">
 		<ul className="blogsList">
-		<li className="menuItem col-md-2">
+		<li className="menuItem">
 		<a className="title" href={this.state.url}>
 		<h2>{this.props.title}</h2>
 		</a>
@@ -156,15 +133,15 @@ class HomePage extends Component {
     render() {
     const dispatch = this.props.dispatch;
     const { projectName, ownerName } = this.props.data;
-    return (
-      <div className="hz">
-	    <div>
-	    <PostList data={this.state.data} />
-	    </div>
-	    <div>
-	    <About />
-	    </div>
-	    </div>
+	return (
+		<div className="row homeWrapper">
+		<div className="col-xs-6 col-xs-offset-2">
+		<PostList data={this.state.data} />
+		</div>
+		<div className="col-xs-3">
+		<About />
+		</div>
+		</div>
     );
   }
 }

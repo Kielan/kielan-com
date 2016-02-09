@@ -9,13 +9,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Logo from '../../img/logo.png';
+import Topnav from './shared/Topnav.react';
 
 class App extends Component {
   render() {
-    return (
-      <div className="wrapper">
-        { this.props.children }
-      </div>
+      return (
+	      <div className="wrapper">
+	      <Topnav />
+	  { this.props.children }
+	  </div>
     );
   }
 }

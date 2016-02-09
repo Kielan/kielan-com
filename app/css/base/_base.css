@@ -30,3 +30,24 @@ body {
 body.js-open-sans-loaded {
 	font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
+
+.top-bar {
+    height: 3.8125rem;
+    line-height: 2.8125rem;
+    position: relative;
+    background: #333333;
+    margin: 0 !important;
+    border: 0;
+    width: 100%;
+}
+
+.navTitle {
+    color: white !important;
+    font-weight: 600;
+    padding-left: 2rem;
+}
+
+.nav-li {
+    padding: 0;
+    color: white;
+}
