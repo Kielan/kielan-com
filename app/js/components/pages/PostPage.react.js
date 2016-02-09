@@ -11,7 +11,8 @@ class PostPage extends Component {
 	this.state = {
 	    data: [],
 	    date: '',
-	    content: ''
+	    content: '',
+	    tags: ''
 	}
     }
     generateDate() {
@@ -26,13 +27,10 @@ class PostPage extends Component {
 	var postDate = monthName + ' ' + day + ', ' + postDate[0]; 
 	this.setState({date: postDate})
     }
-    generateContent() {
-	console.log(this.state.content);
-	var preContent = this.state.content;
-
-	    //preContent.replace(/(\r\n|\n|\r)/gm, '</p><p>');
+    generateTags() {
+	var tags = this.state.data.tags,
+	    tagsArray = tags.split(',')
 	
-	//this.setState({content: postContent})
     }
     fetchPost() {
 	var postUrl = this.props.params.urlParam,
@@ -47,13 +45,11 @@ class PostPage extends Component {
 		this.setState({date: doc.data});
 		this.setState({content: doc.content});
 		this.generateDate();
-		this.generateContent();
 	    }.bind(this),
 	    error: function(xhr, status, err) {
 		console.error(this.props.url, status, err.toString())
 	    }.bind(this)
 	})
-
     }
     
     componentDidMount() {
@@ -64,7 +60,7 @@ class PostPage extends Component {
 
 	return (	    
 	    	<div className="main row">
-		<div className="posts col-md-6 col-md-offset-3">
+		<div className="posts col-xs-12 col-sm-8 col-md-6 col-xs-offset-0 col-sm-offset-2 col-md-offset-3">
 		<ul className="blogsList">
 		<li className="menuItem">
 
@@ -75,7 +71,7 @@ class PostPage extends Component {
 		<div className="post-content">
 		<ReactMarkdown source={this.state.data.content} />
 		</div>
-
+		<div>{this.state.data.tags}</div>
 		<div className="spot-im-frame-inpage" data-post-id={this.state.url}></div>
 		</li>
 	        </ul>

@@ -31,6 +31,10 @@ body.js-open-sans-loaded {
 	font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+i {
+    font-size: 4.5rem !important;
+}
+
 .top-bar {
     height: 3.8125rem;
     line-height: 2.8125rem;

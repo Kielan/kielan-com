@@ -77,7 +77,7 @@ class Post extends Component {
 		<span>comments</span><br />
 		<span className="post-content">{this.state.content}</span>
 		<a href={this.state.url}>
-		<span>[read more]</span>
+		<span className="readMore">[read more]</span>
 		</a>
 	    </li>
 	        </ul>
@@ -135,12 +135,10 @@ class HomePage extends Component {
     const { projectName, ownerName } = this.props.data;
 	return (
 		<div className="row homeWrapper">
-		<div className="col-xs-6 col-xs-offset-2">
+		<div className="col-md-6 col-sm-8 col-xs-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
 		<PostList data={this.state.data} />
 		</div>
-		<div className="col-xs-3">
 		<About />
-		</div>
 		</div>
     );
   }

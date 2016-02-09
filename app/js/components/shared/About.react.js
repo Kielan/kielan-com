@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class About extends Component {
     render() {
 	return (
-		<div className="about">
+		<div className="about col-md-3 hidden-xs">
 
 		<img className="profilePic" src="img/kielan.jpg" alt="Kielan Lemons"></img>
 
@@ -14,9 +14,9 @@ class About extends Component {
 		<p>-Frank Underwood</p>
 		</div>
 		<div className="about-links">
-		<a href="https://www.instagram.com/kielan_lemons/"><i className="fa fa-instagram"></i><span>Instagram</span></a>
-		<a href="https://twitter.com/KielanLemons"><i className="fa fa-twitter-square"></i><span>Twitter</span></a>
-		<a href="https://github.com/Kielan"><i className="fa fa-github-square"></i><span>Github</span></a>
+		<a href="https://twitter.com/KielanLemons"><i className="fa fa-twitter-square"></i></a>
+		<a href="https://www.instagram.com/kielan_lemons/"><i className="fa fa-instagram"></i></a>
+		<a href="https://github.com/Kielan"><i className="fa fa-github-square"></i></a>
 		</div>
 	    </div>
 	)

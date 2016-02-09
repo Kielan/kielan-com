@@ -97,6 +97,7 @@ nav {
 .title {
     border-bottom: 1px solid #e3e3e3;
 }
+
 .hz {
     display: flex;
     align-content: space-around;
@@ -104,8 +105,8 @@ nav {
 }
 
 .profilePic {
-    width: 10rem;
-    height: 10rem;
+    width: 14rem;
+    height: 14rem;
     border-radius: .5rem;
 }
 
@@ -119,6 +120,7 @@ nav {
 
 .about h1 {
     margin-bottom: .5rem;
+    white-space: nowrap;
 }
 
 .about p {
@@ -132,21 +134,25 @@ nav {
 
 .about-links {
     display: flex;
+    width: 60%;
+    align-content: space-around;
 }
 
 .about-links a {
-    margin: 0 .5rem 0 .5rem;
+    margin:auto;
     text-transform: lowercase;
     font-weight: bold;
 }
+
 .post-list {
 
 }
 
 .bio-quote {
-    margin: .5rem 0 1rem 0;
-    width: 21rem;
+    margin: .5rem 1rem 1rem 4rem;
+    width: 100%;
     line-height: 1.5;
+    font-size: 16px;
 }
 
 .post-content {
@@ -158,4 +164,20 @@ nav {
 
 .homeWrapper {
     width: 100%;
+}
+
+.readMore {
+    font-size: 16px;
+    font-family: monospace;
+    text-decoration: underline;
+}
+
+.readMore:hover {
+    font-weight: bold;
+}
+
+.tag {
+    color: #cccccc !important;
+    background-color: transparent;
+    border-color: #cccccc;
 }
