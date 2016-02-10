@@ -60,7 +60,8 @@ body {
 }
 
 .menuItem {
-    display: inline-block
+    display: inline-block;
+    padding-top: .75rem;
 }
 
 ul {
@@ -177,7 +178,23 @@ nav {
 }
 
 .tag {
-    color: #cccccc !important;
+    color: #black !important;
     background-color: transparent;
-    border-color: #cccccc;
+    border-color: black;
+    border: 1px solid;
+    border-radius: .2rem;
+    padding: .2rem .75rem .2rem .75rem;
+    margin: 0 .5rem 0 .5rem;
+}
+
+.tag:first-child {
+    margin-left:0;
+}
+
+.tag:last-child {
+    margin-right: 0;
+}
+
+.tag:hover {
+    border-color: #73859f;
 }

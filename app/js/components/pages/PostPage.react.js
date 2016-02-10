@@ -5,6 +5,23 @@ import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 
+class TagsComponent extends Component {
+	render() {
+	    var tagsComponent = this.props.data.map(function(tag, index){
+		return (
+			<a className="tag" href="http://localhost:3005/">
+			{tag}
+		    </a>
+		)
+	    });
+		return  (
+			<div>
+			{tagsComponent}
+			</div>
+		)
+	}
+}
+
 class PostPage extends Component {
     constructor(props) {
 	super(props)
@@ -12,7 +29,7 @@ class PostPage extends Component {
 	    data: [],
 	    date: '',
 	    content: '',
-	    tags: ''
+	    tags: []
 	}
     }
     generateDate() {
@@ -28,9 +45,9 @@ class PostPage extends Component {
 	this.setState({date: postDate})
     }
     generateTags() {
-	var tags = this.state.data.tags,
-	    tagsArray = tags.split(',')
-	
+	var tagsString = this.state.data.tags,
+	    tagsArray = tagsString.split(',');
+	this.setState({tags: tagsArray})	
     }
     fetchPost() {
 	var postUrl = this.props.params.urlParam,
@@ -45,6 +62,7 @@ class PostPage extends Component {
 		this.setState({date: doc.data});
 		this.setState({content: doc.content});
 		this.generateDate();
+		this.generateTags();
 	    }.bind(this),
 	    error: function(xhr, status, err) {
 		console.error(this.props.url, status, err.toString())
@@ -71,7 +89,7 @@ class PostPage extends Component {
 		<div className="post-content">
 		<ReactMarkdown source={this.state.data.content} />
 		</div>
-		<div>{this.state.data.tags}</div>
+		<TagsComponent data={this.state.tags}/>
 		<div className="spot-im-frame-inpage" data-post-id={this.state.url}></div>
 		</li>
 	        </ul>

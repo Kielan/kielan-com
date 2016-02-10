@@ -7,29 +7,7 @@ import { asyncChangeProjectName, asyncChangeOwnerName } from '../../actions/AppA
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
-class About extends Component {
-    render() {
-	return (
-		<div className="about">
-
-		<img className="profilePic" src="img/kielan.jpg" alt="Kielan Lemons"></img>
-
-		<h1>Kielan Lemons</h1>
-		<div className="bio"></div>
-		<div className="bio-quote">
-		<p>"Imagination is its own form of ourage"</p>
-		<p>-Frank Underwood</p>
-		</div>
-		<div className="about-links">
-		<a href="https://www.instagram.com/kielan_lemons/"><span>Instagram</span></a>
-		<a href="https://twitter.com/KielanLemons"><span>Twitter</span></a>
-		<a href="https://github.com/Kielan"><span>Github</span></a>
-		</div>
-	    </div>
-	)
-    }
-}
+import About from '../shared/About.react';
 
 class Post extends Component {
     constructor(props) {
@@ -90,7 +68,7 @@ class Post extends Component {
 	    	<div className="main">
 		<div className="posts">
 		<ul className="blogsList">
-		<li className="menuItem col-md-2">
+		<li className="menuItem">
 		<a className="title" href={this.state.url}>
 		<h2>{this.props.title}</h2>
 		</a>
@@ -99,7 +77,7 @@ class Post extends Component {
 		<span>comments</span><br />
 		<span className="post-content">{this.state.content}</span>
 		<a href={this.state.url}>
-		<span>[read more]</span>
+		<span className="readMore">[read more]</span>
 		</a>
 	    </li>
 	        </ul>
@@ -112,7 +90,6 @@ class Post extends Component {
 
 class PostList extends Component {
     render() {
-	console.log('render')
 	 var blogPosts = this.props.data.map(function(post, index){
 	 return (
 		 <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content} key="post.key"/>
@@ -155,15 +132,13 @@ class HomePage extends Component {
     render() {
     const dispatch = this.props.dispatch;
     const { projectName, ownerName } = this.props.data;
-    return (
-      <div className="hz">
-	    <div>
-	    <PostList data={this.state.data} />
-	    </div>
-	    <div>
-	    <About />
-	    </div>
-	    </div>
+	return (
+		<div className="row homeWrapper">
+		<div className="col-md-6 col-sm-8 col-xs-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
+		<PostList data={this.state.data} />
+		</div>
+		<About />
+		</div>
     );
   }
 }
