@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { copyToClipboardMsg } from '../../actions/AppActions';
+import { copyToClipboard } from '../../actions/AppActions';
 
 class About extends Component {
     attachListener() {
 	document.getElementById("copyButton").addEventListener("click", function() {
-	    copyToClipboardMsg(document.getElementById("copyTargetAdress"), "msg");
+	    copyToClipboard(document.getElementById("copyTargetAdress"));
+	    document.getElementById("copyButton").setAttribute("aria-label", "Copied!")
 });
     }
     componentDidMount() {
@@ -24,7 +25,7 @@ class About extends Component {
 		<a target="_blank" aria-label="Twitter" href="https://twitter.com/KielanLemons"><i className="fa fa-twitter-square"></i></a>
 		<a target="_blank" aria-label="Instagram" href="https://www.instagram.com/kielan_lemons/"><i className="fa fa-instagram"></i></a>
 		<a target="_blank" aria-label="Github" href="https://github.com/Kielan"><i className="fa fa-github-square"></i></a>
-		<span id="copyTargetAdress">ki.lemons@gmail.com</span> <button aria-label="mail" id="copyButton"><i className="fa fa-envelope"></i></button>
+		<span id="copyTargetAdress">ki.lemons@gmail.com</span><button aria-label="copy mail to clipboard" className="aria-mail" id="copyButton"><i className="fa fa-envelope"></i></button><span id="msg"></span>
 	    </div>
 	    </div>
 	)

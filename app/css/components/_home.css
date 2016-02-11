@@ -222,3 +222,20 @@ nav {
     height: inherit;
     outline:none;
 }
+
+.homePageDate {
+    display: block;
+}
+
+.aria-mail:hover:after {
+    content: attr(aria-label);
+    background: rgba(0,0,0,0.8);
+    border-radius: 3px;
+    color: white;
+    position: absolute;
+    transform: translateX(50%);
+    right: 25%;
+    top: 100%;
+    padding: 5px 8px;
+    font: 12px;
+}

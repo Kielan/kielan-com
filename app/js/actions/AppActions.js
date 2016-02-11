@@ -23,24 +23,7 @@
  *    created in the second step
  */
 
-export function copyToClipboardMsg(elem, msgElem) {
-	  var succeed = copyToClipboard(elem);
-    var msg;
-    if (!succeed) {
-        msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
-    } else {
-        msg = "Text copied to the clipboard."
-    }
-    if (typeof msgElem === "string") {
-        msgElem = document.getElementById(msgElem);
-    }
-    msgElem.innerHTML = msg;
-    setTimeout(function() {
-        msgElem.innerHTML = "";
-    }, 2000);
-}
-
-function copyToClipboard(elem) {
+export function copyToClipboard(elem) {
 	  // create hidden text element, if it doesn't already exist
     var targetId = "_hiddenCopyText_";
     var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";

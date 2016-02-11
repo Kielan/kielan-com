@@ -42,8 +42,7 @@ module.exports = function(options) {
         "process.env": {
             NODE_ENV: JSON.stringify("production"),
    	    URL_ENV: JSON.stringify("http://localhost:3000/"),
-	    API_URL: JSON.stringify("http://localhost:3005/blogapi/"),
-	    IMG_LOCATION: JSON.stringify("")
+	    API_URL: JSON.stringify("http://localhost:3005/blogapi/")
         }
       })
     ];
@@ -68,8 +67,7 @@ module.exports = function(options) {
 	new webpack.DefinePlugin({
             "process.env": {
 		URL_ENV: JSON.stringify("http://localhost:3000/"),
-		API_URL: JSON.stringify("http://localhost:3005/blogapi/"),
-		IMG_LOCATION: JSON.stringify("")
+		API_URL: JSON.stringify("http://localhost:3005/blogapi/")
             }
       })
     ]

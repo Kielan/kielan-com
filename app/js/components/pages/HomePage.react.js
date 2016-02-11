@@ -72,8 +72,7 @@ class Post extends Component {
 		<h2>{this.props.title}</h2>
 		</a>
 		<h3>{this.props.subtitle}</h3>
-		<span>{this.state.date}</span><br />
-		<span>comments</span><br />
+		<span className="homePageDate">{this.state.date}</span><br />
 		<ReactMarkdown disallowedTypes={['Image']} className="post-content" source={this.state.content} />
 		<a href={this.state.url}>
 		<span className="readMore">[read more]</span>
