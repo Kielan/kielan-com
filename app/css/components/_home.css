@@ -135,18 +135,25 @@ nav {
 
 .about-links {
     display: flex;
-    width: 60%;
-    align-content: space-around;
+    width: 100%;
+    align-content: space-between;
+    height: 7rem;
+    max-width: 225px;
 }
 
 .about-links a {
-    margin:auto;
+    margin: auto;
     text-transform: lowercase;
     font-weight: bold;
+    flex: 1;
+    width: 5rem;
+    display: flex;
+    align-items: center;
 }
 
-.post-list {
-
+.about-links a > i {
+    display: block;
+    margin: auto;
 }
 
 .bio-quote {
@@ -203,4 +210,15 @@ nav {
 
 .tag:hover {
     border-color: #73859f;
+}
+
+#copyTargetAdress {
+    display: none;
+}
+
+#copyButton {
+    border: none;
+    background: none;
+    height: inherit;
+    outline:none;
 }
