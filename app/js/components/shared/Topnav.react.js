@@ -8,7 +8,7 @@ class Topnav extends Component {
 		<ul className="col-md-12">
 		<li className="row nav-li">
 	    <h4 className="">
-	      <a className="navTitle" href="/">Kielan Lemons</a>
+	      <a className="navTitle" href={process.env.URL_ENV}>Kielan Lemons</a>
 		</h4>
 		</li>
 		</ul>

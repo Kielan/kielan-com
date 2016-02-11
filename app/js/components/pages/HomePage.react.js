@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import About from '../shared/About.react';
+import ReactMarkdown from 'react-markdown';
 
 class Post extends Component {
     constructor(props) {
@@ -40,11 +41,11 @@ class Post extends Component {
 	this.setState({date: postDate})
     }
     generateContent() {
-	console.log("this is the content" + this.props.content)
 	var preContent = this.props.content,
 	    postContent = preContent.slice(0,450),
 	    dots = '... ';
 
+	
 	//check if the last character is a space
 	function testPostContent(string) {
 	    if(/\s+$/.test(string)) {
@@ -75,7 +76,7 @@ class Post extends Component {
 		<h3>{this.props.subtitle}</h3>
 		<span>{this.state.date}</span><br />
 		<span>comments</span><br />
-		<span className="post-content">{this.state.content}</span>
+		<ReactMarkdown disallowedTypes={['Image']} className="post-content" source={this.state.content} />
 		<a href={this.state.url}>
 		<span className="readMore">[read more]</span>
 		</a>
@@ -90,7 +91,6 @@ class Post extends Component {
 
 class PostList extends Component {
     render() {
-	console.log('render')
 	 var blogPosts = this.props.data.map(function(post, index){
 	 return (
 		 <Post title={post.title} subtitle={post.subtitle} date={post.date} content={post.content} key="post.key"/>
@@ -115,7 +115,7 @@ class HomePage extends Component {
     
     loadPostsFromServer() {
 	$.ajax({
-	    url: 'http://localhost:3005/blogapi/posts',
+	    url: process.env.API_URL + 'posts',
 	    dataType: 'json',
 	    cash: false,
 	    success: function(data) {

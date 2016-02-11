@@ -163,6 +163,12 @@ nav {
     color: rgba(0, 0, 0, 0.9);
 }
 
+.post-content img {
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
 .homeWrapper {
     width: 100%;
 }

@@ -14,9 +14,9 @@ class About extends Component {
 		<p>-Frank Underwood</p>
 		</div>
 		<div className="about-links">
-		<a href="https://twitter.com/KielanLemons"><i className="fa fa-twitter-square"></i></a>
-		<a href="https://www.instagram.com/kielan_lemons/"><i className="fa fa-instagram"></i></a>
-		<a href="https://github.com/Kielan"><i className="fa fa-github-square"></i></a>
+		<a aria-label="Twitter" href="https://twitter.com/KielanLemons"><i className="fa fa-twitter-square"></i></a>
+		<a aria-label="Instagram" href="https://www.instagram.com/kielan_lemons/"><i className="fa fa-instagram"></i></a>
+		<a aria-label="Github" href="https://github.com/Kielan"><i className="fa fa-github-square"></i></a>
 		</div>
 	    </div>
 	)

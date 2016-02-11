@@ -9,7 +9,7 @@ class TagsComponent extends Component {
 	render() {
 	    var tagsComponent = this.props.data.map(function(tag, index){
 		return (
-			<a className="tag" href="http://localhost:3005/">
+			<a className="tag" href={process.env.URL_ENV}>
 			{tag}
 		    </a>
 		)
@@ -51,7 +51,7 @@ class PostPage extends Component {
     }
     fetchPost() {
 	var postUrl = this.props.params.urlParam,
-	    fetchUrl = 'http://localhost:3005/blogapi/post/' + postUrl;
+	    fetchUrl = process.env.API_URL + 'post/' + postUrl;
 	$.ajax({
 	    url: fetchUrl,
 	    dataType: 'json',
